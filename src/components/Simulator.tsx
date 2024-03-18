@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from "react";
-import { FixtureItem } from  "@/app/lib/types/fixtureType";
-import { StandingsItem } from "@/app/lib/types/standingsType";
+import { FixtureItem } from  "@/lib/types/fixtureType";
+import { StandingsItem } from "@/lib/types/standingsType";
 import { GrLinkPrevious, GrLinkNext } from "react-icons/gr";
 
 

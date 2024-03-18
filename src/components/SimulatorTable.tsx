@@ -1,8 +1,8 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import { StandingsItem } from "@/app/lib/types/standingsType";
-import { FixtureItem } from '@/app/lib/types/fixtureType';
-import { fetchFixtureByRound, getRounds } from '@/app/lib/actions';
+import { StandingsItem } from "@/lib/types/standingsType";
+import { FixtureItem } from '@/lib/types/fixtureType';
+import { fetchFixtureByRound, getRounds } from '@/lib/actions';
 
 function TableHeadItem({ item }: { item: string }) {
     return <th className="px-2 py-1 text-xs font-medium text-gray-500 uppercase tracking-wider">{item}</th>;

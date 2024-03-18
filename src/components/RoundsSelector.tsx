@@ -1,7 +1,7 @@
 // components/RoundsSelector.tsx
 import React from 'react';
-import { RoundsApiType } from '@/app/lib/types/roundsType';
-import { FixtureResponse } from '@/app/lib/types/fixtureType';
+import { RoundsApiType } from '@/lib/types/roundsType';
+import { FixtureResponse } from '@/lib/types/fixtureType';
 
 interface RoundsSelectorProps {
     rounds: RoundsApiType | null;

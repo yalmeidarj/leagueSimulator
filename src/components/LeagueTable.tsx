@@ -1,8 +1,8 @@
-import { fetchFixtureByRound, getLeagueStandingBySeason, getRounds } from "@/app/lib/actions";
-import { StandingsItem } from "@/app/lib/types/standingsType";
+import { fetchFixtureByRound, getLeagueStandingBySeason, getRounds } from "@/lib/actions";
+import { StandingsItem } from "@/lib/types/standingsType";
 import Image from "next/image";
 import SimulatorTable from "./SimulatorTable";
-import { FixtureItem } from "@/app/lib/types/fixtureType";
+import { FixtureItem } from "@/lib/types/fixtureType";
 
 
 export default async function LeagueTable({ year, id }: { year: string, id: string }) {

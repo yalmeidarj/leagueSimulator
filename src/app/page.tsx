@@ -3,10 +3,10 @@
 // import Link from "next/link";
 
 import Simulator from "@/components/Simulator";
-import { getAllMatchesByLeagueSeason, getCurrentSeason, getLeagueStandingBySeason } from "./lib/actions";
+import { getAllMatchesByLeagueSeason, getCurrentSeason, getLeagueStandingBySeason } from "../lib/actions";
 import Link from "next/link";
 import Image from "next/image";
-import { LeagueInfoType } from "./lib/types/leagueType";
+import { LeagueInfoType } from "../lib/types/leagueType";
 import { useSearchParams } from "next/navigation";
 
 

@@ -1,4 +1,4 @@
-import { StandingsItem } from "@/app/lib/types/standingsType";
+import { StandingsItem } from "@/lib/types/standingsType";
 import Image from "next/image";
 import { FaArrowDown, FaArrowUp, FaSquareFull } from "react-icons/fa";
 

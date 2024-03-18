@@ -1,6 +1,6 @@
 // components/RankTable.tsx
 import React from 'react';
-import { StandingsItem, standingsApiObjType } from '@/app/lib/types/standingsType';
+import { StandingsItem, standingsApiObjType } from '@/lib/types/standingsType';
 
 
 interface RankTableProps {
