@@ -20,13 +20,13 @@ export type LeagueInfoType = {
   logo: string;
 };
 
-type Country = {
+export type Country = {
   name: string;
   code: string;
   flag: string;
 };
 
-type Seasons = {
+export type Seasons = {
   year: number;
   start: string;
   end: string;

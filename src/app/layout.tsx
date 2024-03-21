@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import React, { ReactNode } from "react";
-
+import Image from 'next/image'
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -17,10 +17,30 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en">
-      {/* <RoundProvider> */}
-        <body className={inter.className}>{children}</body>
-      {/* </RoundProvider> */}
+    <html lang="">      
+      <body className={inter.className}>
+        <div className='bg-custom-background text-custom-text'>
+          <div className=' w-full  bg-custom-foreground'>
+            <div className='w-full flex justify-around items-center h-full'>
+              <Image
+                src="/logo.png"
+                alt="Picture of the author"
+                width={60}
+                height={60}
+              >
+
+              </Image>
+              <div className='flex justify-around bg-white  '>
+              
+              <h1 className='text-2xl font-bold text-custom-text'>View more</h1>
+              <h1 className='text-2xl font-bold text-custom-text'>Login</h1>
+              </div>
+            </div>
+          </div>
+        
+        {children}
+        </div>
+      </body>      
     </html>
   );
 }

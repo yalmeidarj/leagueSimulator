@@ -97,7 +97,7 @@ export async function fetchFixtureByRound(
     const data: FixtureResponse = await response.json();
 
 
-    console.log(data);
+    // console.log(data);
 
 
     return data;
@@ -135,7 +135,7 @@ export async function getAllMatchesByLeagueSeason(
     const url = `${ApiConstants2Provider.BASE_URL}fixtures?league=${league}&season=${season}`;
     const response = await fetch(url, ApiConstants2Provider.getFetchOptions());
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
 
     // Sort the data by round (round.league.round)
     // data.response.sort((a, b) => {
@@ -150,7 +150,7 @@ export async function getAllMatchesByLeagueSeason(
     //   return 0;
     // });
 
-    console.log(data);
+    // console.log(data);
 
 
     return data;
