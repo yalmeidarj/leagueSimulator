@@ -170,11 +170,11 @@ export default function Simulator({ simulatorData }: SimulatorProps) {
 
 
     return (
-        <main className="flex flex-col  items-center  min-h-screen w-full p-4 md:p-12 ">
-            <div className='flex flex-col  w-full gap-8 sm:flex-row-reverse md:items-start md:justify-between   lg:gap-16'>
-                <Carousel className="w-full  max-h-auto lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl shadow-md bg-[#E3F2FD] rounded-lg relative">
-                    <div className=' rounded-md  '>
-                        <div className=" rounded-tl-md rounded-tr-md flex flex-row justify-between items-center w-full text-background text-xl font-semibold p-2 bg-gradient-to-tr from-custom-gradient to-custom-gradientSecond">
+        <main className="flex flex-col  items-center  min-h-screen w-full sm:p-4 md:p-12 ">
+            <div className='flex flex-col  w-full mt-2 sm:flex-row-reverse md:items-start md:justify-between lg:gap-16'>
+                <Carousel className="w-full  max-h-auto lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl shadow-md rounded-lg relative">
+                    <div className=' rounded-md w-full  '>
+                        <div className=" rounded-tl-md rounded-tr-md flex flex-row justify-between items-center w-full text-background text-xl font-semibold p-2 bg-custom-foreground">
                         <button onClick={() => navigateRounds('previous')} className="text-sm md:text-base lg:text-lg">
                             <GrLinkPrevious
                                 className="m-2"
@@ -187,14 +187,14 @@ export default function Simulator({ simulatorData }: SimulatorProps) {
                             />
                         </button>
                     </div>
-                    <div className='p-4 px-8 mx-12 '> 
+                        <div className='sm:p-4 sm:px-8 mx-12  '> 
                 <CarouselContent>                            
                     {matchesFeedData.map((matches, idx) => {                        
                         return (
                             <CarouselItem
                                 key={idx}
                             >
-                                <div className="flex flex-col items-center gap-2.5">
+                                <div className="flex flex-col w-full items-center  gap-2">
                                     {matches?.map((match) => {
                                         const dateFromTimestamp = new Date(match.fixture.timestamp * 1000);
                                         const timeFromTimestamp = dateFromTimestamp.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });

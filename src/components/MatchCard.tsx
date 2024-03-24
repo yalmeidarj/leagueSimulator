@@ -59,7 +59,7 @@ export default function MatchCard({ props, onGoalsChange }: MatchCardProps) {
     );
     return (
         // Updated component layout and styling to match the provided image
-        <div className="flex items-center w-full p-0.5 text-sm my-0.5 border  text-custom-text  ">
+        <div className="flex items-center justify-between w-full p-0.5 text-sm my-0.5 border gap-1  text-custom-text  ">
             <div className='flex items-center justify-between gap-2 w-full mx-0.5'>
                 <div className='flex justify-end w-full '>
                 
@@ -72,7 +72,7 @@ export default function MatchCard({ props, onGoalsChange }: MatchCardProps) {
                     className=""
                     />
                     </div>
-                <div className='grid grid-cols-2 max-w-auto gap-0.5 self-end'>
+                <div className='grid grid-cols-2 max-w-auto gap-0.5 '>
                     <div className='flex flex-col gap-0.5 '>                   
                         <GoalButton team="home" increment={true} />
                         <GoalButton team="home" increment={false} />
@@ -84,12 +84,12 @@ export default function MatchCard({ props, onGoalsChange }: MatchCardProps) {
                         max="10"
                         value={homeGoals === null ? '' : homeGoals.toString()}
                         onChange={(e) => handleGoalInputChange('home', e.target.value ? parseInt(e.target.value) : null)}
-                        className='bg-[#34383C] text-white font-bold h-full text-center'
+                        className='bg-[#34383C] text-white font-bold h-full sm:min-w-0 min-w-[20px] text-center'
                     />
                 </div>
             </div>
-            <div className='flex items-center justify-start w-full gap-2'>
-                    <div className='grid grid-cols-2 gap-0.5  max-w-auto'>
+            <div className='flex items-center max-w-auto justify-start w-full gap-2'>
+                    <div className='grid grid-cols-2 gap-0.5'>
                         <input
                             type="number"
                             id="awayGoals"
@@ -97,7 +97,7 @@ export default function MatchCard({ props, onGoalsChange }: MatchCardProps) {
                             max="10"
                             value={awayGoals !== null ? awayGoals : ''}
                             onChange={(e) => handleGoalInputChange('away', e.target.value ? parseInt(e.target.value) : null)}
-                            className='bg-[#34383C] text-white font-bold h-full  text-center'
+                            className='bg-[#34383C] text-white font-bold h-full sm:min-w-0 min-w-[20px]  text-center'
                         />
                         <div className='flex flex-col gap-0.5'>
                             <GoalButton team="away" increment={true} />
