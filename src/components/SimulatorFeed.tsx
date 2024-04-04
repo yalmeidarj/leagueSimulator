@@ -1,5 +1,6 @@
 import { getLeagueStandingBySeason, getAllMatchesByLeagueSeason } from "@/lib/actions"
 import Simulator from "./Simulator"
+import LeagueCTA from "./LeagueCTA"
 
 export default async function SimulatorFeed({ leagueId, currentSeason }: { leagueId: string, currentSeason: string }) {
 
@@ -12,11 +13,8 @@ export default async function SimulatorFeed({ leagueId, currentSeason }: { leagu
 
 
     if (!rankingTable.response || !Array.isArray(rankingTable.response[0]?.league.standings[0])) {
-        return <div>NO AVAILABLE DATA...</div>
+        return (<LeagueCTA />)
     }
-
-
-    // console.log(`standings -->\n`, rankingTable.response[0].league.standings[0])
 
     const rankingTableData = rankingTable.response[0].league.standings[0]
 

@@ -66,6 +66,22 @@
   }
 }
  
+@keyframes scrollHint {
+    0%, 100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(20px);
+        opacity: 0.5;
+    }
+}
+
+.scroll-hint {
+    animation: scrollHint 2s ease-in-out infinite;
+}
+
+
 @layer base {
   * {
     @apply border-border;

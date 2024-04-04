@@ -4,8 +4,8 @@ import LeagueCard from "./LeagueCard"
 export default async function League({ id }: { id: string }) {
     const league = await getCurrentSeason(id)
 
-    if (!league || !league.response || !Array.isArray(league.response)) {
-        return <div>Loading...</div>
+    if (!league || !league.response || !league.response[0] || !Array.isArray(league.response)) {
+        return <div>Loading (from league componente)...</div>
     }
 
     const currentSeason = league.response[0].seasons

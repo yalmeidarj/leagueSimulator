@@ -155,19 +155,18 @@ export default function Simulator({ simulatorData }: SimulatorProps) {
         setStandings(updatedStandings);
     };
 
-    // Separate matches into groups of 5
-    // matches should be displayed in a carousel with 5 matches per slide.
-    // get the first 5 matches
+    
     const totalMatches = groupedMatches[currentRound]?.length || 0;
+
+    // Separate matches into 2 groups to be displayed in a carousel.
+    // Each group will contain half of the total matches for the current round.
+    
     // If totalMatches is odd, initialMatches will get the extra match
     const splitIndex = Math.ceil(totalMatches / 2);
-
-    // Split the matches into two groups
     const initialMatches = groupedMatches[currentRound]?.slice(0, splitIndex);
     const lastMatches = groupedMatches[currentRound]?.slice(splitIndex);
-    
-    const matchesFeedData = [initialMatches, lastMatches];
 
+    const matchesFeedData = [initialMatches, lastMatches];
 
     return (
         <main className="flex flex-col  items-center  min-h-screen w-full sm:p-4 md:p-12 ">
@@ -187,7 +186,7 @@ export default function Simulator({ simulatorData }: SimulatorProps) {
                             />
                         </button>
                     </div>
-                        <div className='sm:p-4 sm:px-8 mx-12  '> 
+                        <div className=' '> 
                 <CarouselContent>                            
                     {matchesFeedData.map((matches, idx) => {                        
                         return (
@@ -235,13 +234,12 @@ export default function Simulator({ simulatorData }: SimulatorProps) {
                         </div>
                     </div>
                 </Carousel>
-                    <div className='w-full max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl'>
+                    <div className='w-full lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl'>
                         <table className="w-full text-xs sm:text-sm md:text-base">
                 <StandingsTableHeader />
                 <StandingsTableBody standings={standings} />
                 </table>
                     </div>
-                {/* </Carousel> */}
             </div>
         </main>
     );
