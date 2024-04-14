@@ -1,11 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
+import LeagueFeed from "./LeagueFeed";
+
 
 export default function NavBar() {
     return (
-        <div className='bg-custom-background flex flex-row text-custom-text h-[80px]  '>
+        <>
+        <div className='relative bg-custom-background flex flex-col text-custom-text   '>
             <div className=' w-full flex flex-row justify-between items-center  bg-custom-foreground h-4/4'>
-                <div className='absolute top-0 flex justify-between w-full'>
+                    <div className='z-20 absolute top-0 flex justify-between w-auto'>
                     <Link
                         href="/"
                         className="hover:text-br-yellow"
@@ -15,7 +18,9 @@ export default function NavBar() {
                             alt="League Simulator Logo"
                             width={90}
                             height={90}
-                            className="pb-4 rounded-r-full bg-custom-background mr-[1rem] hover:scale-110 transform transition duration-300 ease-in-out"
+                                className="py-1.5  rounded-r-full
+                                 bg-gradient-to-tr from-custom-gradient to-custom-gradientSecond 
+                                 mr-[1rem] hover:scale-110 transform transition duration-300 ease-in-out"
                         />
                     </Link>
 
@@ -28,7 +33,8 @@ export default function NavBar() {
                     </h1>
                 </div>
             </div>
-
         </div>
+            <LeagueFeed />
+        </>
     );
 }

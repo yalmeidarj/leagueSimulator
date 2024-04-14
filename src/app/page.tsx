@@ -1,10 +1,4 @@
-
-
 import SimulatorFeed from "@/components/SimulatorFeed";
-import LeagueFeed from "@/components/LeagueFeed";
-import Footer from "@/components/Footer";
-
-
 
 export default async function Home({
   params,
@@ -18,16 +12,11 @@ export default async function Home({
   const currentSeason = searchParams?.season as string
     
   return (
-    <main className='justify-between flex flex-col sm:h-screen '>
-      <div className='ml-[5rem] '>
-    
-      <LeagueFeed />  
-    </div>
+    <main className='justify-between flex flex-col sm:h-screen pt-8 sm:pt-2 '>
       <SimulatorFeed
         leagueId={leagueId}
         currentSeason={currentSeason}
       />
-
     </main>
   );
 }

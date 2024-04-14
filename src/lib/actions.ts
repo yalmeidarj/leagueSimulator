@@ -5,22 +5,6 @@ import { leagueApiType } from "./types/leagueType";
 import { RoundsApiType } from "./types/roundsType";
 import { standingsApiObjType } from "./types/standingsType";
 
-// const ApiConstants = {
-//   BASE_URL: "https://api-football-v1.p.rapidapi.com/v3/",
-//   API_KEY: "6b3b3ae179msh12092c0b165179fp11063cjsnc52d628c2c4c",
-//   API_HOST: "api-football-v1.p.rapidapi.com",
-//   ONE_HOUR: 60 * 60 * 1000,
-//   getFetchOptions(): FetchOptions {
-//     return {
-//       method: "GET",
-//       headers: {
-//         "X-RapidAPI-Key": this.API_KEY,
-//         "X-RapidAPI-Host": this.API_HOST,
-//       },
-//     };
-//   },
-// };
-
 const ApiConstants2Provider = {
   BASE_URL: process.env.BASE_URL,
   revalidate: 5400, // default revalidate time in seconds
@@ -57,7 +41,6 @@ type FetchOptions = {
     readonly "X-RapidAPI-Host": string;
   };
 };
-
 
 
 export async function getLeagueInfo(
