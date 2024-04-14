@@ -58,10 +58,10 @@ export default async function SimulatorFeed({ leagueId, currentSeason }: { leagu
             getCurrentRound(leagueId, currentSeason)
         ]);
 
-        // Check for valid responses and structure
-        if (!currentRound || !Array.isArray(currentRound.response) || currentRound.response.length < 1) {
-            throw new Error('Current round data is not available.');
-        }
+        // // Check for valid responses and structure
+        // if (!currentRound || !Array.isArray(currentRound.response) || currentRound.response.length < 0) {
+        //     throw new Error('Current round data is not available.');
+        // }
         if (!rankingTable?.response || !allMatches?.response) {
             throw new Error('Required league or match data is missing.');
         }

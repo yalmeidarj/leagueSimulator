@@ -147,7 +147,7 @@ export async function getAllMatchesByLeagueSeason(
 
 ): Promise<FixtureResponse> {
   try {
-    ApiConstants2Provider.setRevalidateTime(5 * 3600); // 5 hours for league standings
+    ApiConstants2Provider.setRevalidateTime(3600); // 1 hours for league standings
     const url = `${ApiConstants2Provider.BASE_URL}fixtures?league=${league}&season=${season}`;
     const response = await fetch(url, ApiConstants2Provider.getFetchOptions());
     const data = await response.json();
