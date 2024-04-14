@@ -20,6 +20,7 @@ import MatchCard from "./MatchCard";
 type Props = {
     matchData: FixtureItem[];
     standingsData: StandingsItem[];
+    fetchedCurrentRound: string[];
 };
 
 type SimulatorProps = {
@@ -29,10 +30,10 @@ type SimulatorProps = {
 type GroupedMatches = Record<string, FixtureItem[]>;
 
 export default function Simulator({ simulatorData }: SimulatorProps) {
-    const { matchData, standingsData } = simulatorData;
+    const { matchData, standingsData, fetchedCurrentRound } = simulatorData;
     const [matches, setMatches] = useState<FixtureItem[]>(matchData);
     const [standings, setStandings] = useState<StandingsItem[]>(standingsData);
-    const [currentRound, setCurrentRound] = useState<string>('');
+    const [currentRound, setCurrentRound] = useState<string>(fetchedCurrentRound[0]);
     const [groupedMatches, setGroupedMatches] = useState<GroupedMatches>({});
 
     // Group matches by round

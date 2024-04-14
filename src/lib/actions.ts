@@ -22,16 +22,29 @@ import { standingsApiObjType } from "./types/standingsType";
 // };
 
 const ApiConstants2Provider = {
-
   BASE_URL: process.env.BASE_URL,
-  // ONE_HOUR: 60 * 60 * 1000,
+  revalidate: 5400, // default revalidate time in seconds
+  
+  setRevalidateTime(seconds: number) {
+    this.revalidate = seconds;
+  },
+  
+  // disableRevalidation: false, // Flag to disable revalidation
+  
+  // setDisableRevalidation() {
+  //   this.disableRevalidation = true;
+  // },
+
+  // setEnableRevalidation() {
+  //   this.disableRevalidation = false;
+  // },
+
   getFetchOptions(): FetchOptions {
     return {
       method: "GET",
       headers: {
         "X-RapidAPI-Key": process.env.API_KEY as string,
         "X-RapidAPI-Host": process.env.API_HOST as string,
-        
       },
     };
   },
@@ -51,6 +64,7 @@ export async function getLeagueInfo(
   league: number,
   season?: number
 ): Promise<leagueApiType> {
+  ApiConstants2Provider.setRevalidateTime(12 * 3600); // 12 hours
   let url = `${ApiConstants2Provider.BASE_URL}leagues?id=${league}`;
   if (season) {
     url += `&season=${season}`; // Appends the season parameter to the URL if it's provided
@@ -70,13 +84,14 @@ export async function getLeagueStandingBySeason(
   season?: string
 ): Promise<standingsApiObjType> {
   try {
+    ApiConstants2Provider.setRevalidateTime(2 * 3600); // 2 hours for league standings
     let url = `${ApiConstants2Provider.BASE_URL}standings?season=${season}&league=${league}`;
-    
+
     if (season) {
       url += `&season=${season}`; // Appends the season parameter to the URL if it's provided
     }
     const response = await fetch(url, ApiConstants2Provider.getFetchOptions());
-    
+
     const data: standingsApiObjType = await response.json();
 
     // console.log(`From API:${data.response[0]?.rank}`);
@@ -92,13 +107,12 @@ export async function fetchFixtureByRound(
   round: string
 ): Promise<FixtureResponse> {
   try {
+    ApiConstants2Provider.setRevalidateTime(5 * 3600); // 5 hours for league standings
     const url = `${ApiConstants2Provider.BASE_URL}fixtures?league=${league}&season=${season}&round=${round}`;
     const response = await fetch(url, ApiConstants2Provider.getFetchOptions());
     const data: FixtureResponse = await response.json();
 
-
     // console.log(data);
-
 
     return data;
   } catch (error) {
@@ -112,6 +126,7 @@ export async function getCurrentSeason(league: string): Promise<leagueApiType> {
   // The league id are unique in the API and leagues keep it across all seasons
   // Most of the parameters of this endpoint can be used together.
 
+  ApiConstants2Provider.setRevalidateTime(2592000); // Set to 30 days
   try {
     const url = `${ApiConstants2Provider.BASE_URL}leagues?id=${league}&current=true`;
     const response = await fetch(url, ApiConstants2Provider.getFetchOptions());
@@ -132,26 +147,10 @@ export async function getAllMatchesByLeagueSeason(
 
 ): Promise<FixtureResponse> {
   try {
+    ApiConstants2Provider.setRevalidateTime(5 * 3600); // 5 hours for league standings
     const url = `${ApiConstants2Provider.BASE_URL}fixtures?league=${league}&season=${season}`;
     const response = await fetch(url, ApiConstants2Provider.getFetchOptions());
     const data = await response.json();
-    // console.log(data);
-
-    // Sort the data by round (round.league.round)
-    // data.response.sort((a, b) => {
-    //   const aRound = a.league.round;
-    //   const bRound = b.league.round;
-    //   if (aRound < bRound) {
-    //     return -1;
-    //   }
-    //   if (aRound > bRound) {
-    //     return 1;
-    //   }
-    //   return 0;
-    // });
-
-    // console.log(data);
-
 
     return data;
   } catch (error) {
@@ -165,6 +164,19 @@ export async function getRounds(
 ): Promise<RoundsApiType> {
   try {
     const url = `${ApiConstants2Provider.BASE_URL}fixtures/rounds?league=${league}&season=${season}`;
+    const response = await fetch(url, ApiConstants2Provider.getFetchOptions());
+    const data: RoundsApiType = await response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getCurrentRound(league: string, season: string): Promise<RoundsApiType> {
+  try {
+    ApiConstants2Provider.setRevalidateTime(24 * 3600); // 1 day
+    
+    const url = `${ApiConstants2Provider.BASE_URL}fixtures/rounds?league=${league}&season=${season}&current=true`;
     const response = await fetch(url, ApiConstants2Provider.getFetchOptions());
     const data: RoundsApiType = await response.json();
     return data;
