@@ -3,6 +3,7 @@ import Link from "next/link";
 import FormView from "./FormView";
 import { cn } from "@/lib/utils";
 // import { ApiResponse, Stats } from "@/lib/teamTypes/teamTypes";
+import { FaExternalLinkAlt } from "react-icons/fa"
 
 type League = {
     name: string;
@@ -14,7 +15,7 @@ type Team = {
     name: string;
     // league: League;
     form: string; // Assuming form is a string; adjust as needed
-    gpg: number; // Assuming gpg is a number; adjust as needed
+    gpg: string; // Assuming gpg is a number; adjust as needed
 };
 
 type PreviewTeamStatsCardProps = {
@@ -25,25 +26,49 @@ type PreviewTeamStatsCardProps = {
 
 export function TeamPreviewCard({ team, className }: PreviewTeamStatsCardProps) {
     return (
-        <div className={cn("invisible group-hover:visible absolute bg-gray-800 text-white p-4 rounded-lg max-w-sm")}>
+        <div className={cn("invisible group-hover:visible absolute bg-gray-800 text-white p-4 rounded-lg w-auto", className)}>
             <div className='flex flex-row text-left'>
                 <Image
                     src={team?.logo || "https://via.placeholder.com/20"}
-                    width={50}
-                    height={50}
+                    width={80}
+                    height={30}
                     alt={team.name}
-                ></Image>
-                <div className='ml-4'>
+                    className=''
+                    ></Image>
+
+                <div className='ml-2 flex flex-col'>
                     <Link
                         href="#"
                         className="hover:text-br-yellow">
-                        <h3 className="text-lg font-bold">{team.name}</h3>
+                        <div className='flex flex-row items-center gap-2 underline
+                    hover:text-br-yellow hover:translate-x-1 transform transition duration-200 ease-in-out
+                    cursor-pointer
+                    '>
+                    
+                        <h3 className="text-lg font-bold">
+                            {team.name}
+                        </h3>
+                        <FaExternalLinkAlt />                    
+                        </div>
                     </Link>
                     {/* <p className="text-sm">{team.league.name} ({team.league.country})</p> */}
 
+            <div className="flex flex-col">
+                <p className="text-xs font-bold">Goals Per Game</p>
+                <p>{team.gpg}</p>
+            </div>
                 </div>
             </div >
-            <table className="min-w-full divide-y divide-gray-200">
+            <div className="flex flex-row justify-start mt-2">
+                <div className="flex flex-col">
+                    {/* <p className="text-sm font-bold">Form</p> */}
+                    <FormView
+                        form={team.form}
+                    />
+                </div>
+
+            </div>
+            {/* <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                     <tr>
                         <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -99,7 +124,7 @@ export function TeamPreviewCard({ team, className }: PreviewTeamStatsCardProps) 
                         </td>
                     </tr>
                 </tbody>
-            </table>
+            </table> */}
 
         </div >
     )

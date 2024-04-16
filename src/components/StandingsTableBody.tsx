@@ -13,13 +13,19 @@ export default function StandingsTableBody({ standings }: tableProps) {
             {standings.map((standing, idx) => {
                 const tableIndex = idx + 1;
                 const difference = standing.rank - tableIndex;
+                const goalsFor = standing.all.goals.for;
+                const goalsAgainst = standing.all.goals.against;
+                const played = standing.all.played;
+
+                const gpg = goalsFor  / played;
+
                 let icon;
                 const teamPrevdata = {
                     id: standing.team.id,
                     name: standing.team.name,
                     logo: standing.team.logo,
                     form: standing.form,
-                    gpg: 1,
+                    gpg: gpg.toFixed(2),
 
                 };
                 if (difference < 0) {
