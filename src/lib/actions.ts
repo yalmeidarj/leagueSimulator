@@ -67,7 +67,7 @@ export async function getLeagueStandingBySeason(
   season?: string
 ): Promise<standingsApiObjType> {
   try {
-    ApiConstants2Provider.setRevalidateTime(2 * 3600); // 2 hours for league standings
+    ApiConstants2Provider.setRevalidateTime(3600); // 2 hours for league standings
     let url = `${ApiConstants2Provider.BASE_URL}standings?season=${season}&league=${league}`;
 
     if (season) {

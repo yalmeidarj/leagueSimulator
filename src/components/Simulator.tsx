@@ -12,9 +12,10 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
-import StandingsTableHeader from "./StandingsTableHeader";
-import StandingsTableBody from "./StandingsTableBody";
+import StandingsTableHeader from "./standings/StandingsTableHeader";
+import StandingsTableBody from "./standings/StandingsTableBody";
 import MatchCard from "./MatchCard";
+import StandingsTable from "./standings/StandingTable";
 
 
 type Props = {
@@ -230,17 +231,16 @@ export default function Simulator({ simulatorData }: SimulatorProps) {
                         );                         
                     })}
                 </CarouselContent>                        
-                <CarouselPrevious className="absolute left-16 top-1/2 transform -translate-y-1/2 z-10" />
-                <CarouselNext className="absolute right-16 top-1/2 transform -translate-y-1/2 z-10" />
+                <CarouselPrevious className="absolute left-6 text-4xl bg-custom-foreground text-custom-background top-1/2 transform -translate-y-1/2 z-10" />
+                <CarouselNext className="absolute right-6 text-4xl bg-custom-foreground text-custom-background top-1/2 transform -translate-y-1/2 z-10" />
                         </div>
                     </div>
-                </Carousel>
-                    <div className='w-full lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl'>
-                        <table className="w-full text-xs sm:text-sm md:text-base">
-                <StandingsTableHeader />
-                <StandingsTableBody standings={standings} />
-                </table>
-                    </div>
+                </Carousel>                    
+                <StandingsTable>
+                    <StandingsTableBody
+                        standings={standings}
+                    />
+                </StandingsTable>
             </div>
         </main>
     );

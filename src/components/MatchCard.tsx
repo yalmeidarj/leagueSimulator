@@ -1,8 +1,10 @@
 "use client"
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
-
+import { FaExternalLinkAlt } from "react-icons/fa";
+import { MdQueryStats } from "react-icons/md";
 
 type MatchProps = {
     homeTeam: string,
@@ -83,7 +85,7 @@ export default function MatchCard({ props, onGoalsChange }: MatchCardProps) {
                             className=""
                             />
                     </div>
-                    <div className='grid grid-cols-2 w-full gap-0.5 '>
+                    <div className='max-w-[5rem] grid grid-cols-2 w-full gap-0.5 '>
                         <div className='flex flex-col gap-0.5 '>                   
                             <GoalButton team="home" increment={true} />
                             <GoalButton team="home" increment={false} />
@@ -95,13 +97,22 @@ export default function MatchCard({ props, onGoalsChange }: MatchCardProps) {
                             max="10"
                             value={homeGoals === null ? '' : homeGoals.toString()}
                             onChange={(e) => handleGoalInputChange('home', e.target.value ? parseInt(e.target.value) : null)}
-                            className='bg-[#34383C] text-white font-bold h-full sm:min-w-0 min-w-[30px] text-center'
+                            className='bg-[#34383C] text-white font-bold h-full sm:min-w-0   text-center'
                         />
                     </div>
                 </div>
+                <div className="group relative flex flex-col text-xl  border-b border-transparent transition duration-300 ease-in-out transform hover:text-br-yellow hover:border-br-yellow hover:scale-105">
+                    <div className='absolute  invisible group-hover:visible  text-white '>
+                        {/* <p><strong>Coming soon...</strong></p> */}
+                        <CtaSubscribe
+                            
+                        />
+                    </div>
+                    <MdQueryStats className="cursor-pointer" />
+                </div>
                 <div className='flex justify-between items-center mx-0.5 gap-2 w-full '>
                     
-                    <div className='grid grid-cols-2 w-full gap-0.5'>
+                    <div className='max-w-[5rem] grid grid-cols-2 w-full gap-0.5'>
                         <input
                             type="number"
                             id="awayGoals"
@@ -109,7 +120,7 @@ export default function MatchCard({ props, onGoalsChange }: MatchCardProps) {
                             max="10"
                             value={awayGoals !== null ? awayGoals : ''}
                             onChange={(e) => handleGoalInputChange('away', e.target.value ? parseInt(e.target.value) : null)}
-                            className='bg-[#34383C] text-white font-bold h-full sm:min-w-0 min-w-[30px]  text-center'
+                            className='bg-[#34383C] text-white font-bold h-full sm:min-w-0    text-center'
                         />
                         <div className='flex flex-col gap-0.5'>
                             <GoalButton team="away" increment={true} />
@@ -132,3 +143,39 @@ export default function MatchCard({ props, onGoalsChange }: MatchCardProps) {
     );
 
 }
+
+
+function CtaSubscribe() {
+    return (
+        <div className="flex flex-col z-40  items-center p-2 rounded-md justify-center min-w-[14rem]  w-full  bg-gradient-to-r from-[#38bdf8] to-[#9333ea] ">
+            <div    className="flex flex-row items-center gap-1">
+                <h1 className="text-xl font-bold">Coming Soon!</h1>
+                <Link
+                    href="#"
+                    className="hover:text-br-yellow">
+                    <div className='flex flex-row underline max-w-auto gap-0.5 items-center
+                    hover:text-custom-text text-custom-foreground hover:translate-x-1 transform transition duration-200 ease-in-out
+                    cursor-pointer
+                    '>
+                        <h3 className="text-xs w-full font-bold">
+                            View more
+                        </h3>
+                        <FaExternalLinkAlt />
+                    </div>
+                
+                </Link>
+            
+            </div>
+            <p className="text-sm">Get notified when this (and more) is available.</p>
+            <div className='flex w-full flex-col items-center'>
+            
+            <input type="email"
+                    className="p-2 w-full mt-2 rounded-md text-sm  text-custom-text"
+                placeholder="Email"
+                />
+            <button className="self-end bg-white text-black text-sm p-1 rounded-md mt-2">Let me know!</button>
+                </div>
+        </div>
+    );
+}
+

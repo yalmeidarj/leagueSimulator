@@ -1,7 +1,7 @@
 import { StandingsItem } from "@/lib/types/standingsType";
 import Image from "next/image";
 import { FaArrowDown, FaArrowUp, FaSquareFull } from "react-icons/fa";
-import { TeamPreviewCard } from "./TeamPreviewCard";
+import { TeamPreviewCard } from "../TeamPreviewCard";
 
 type tableProps = {
     standings: StandingsItem[];
@@ -17,7 +17,8 @@ export default function StandingsTableBody({ standings }: tableProps) {
                 const goalsAgainst = standing.all.goals.against;
                 const played = standing.all.played;
 
-                const gpg = goalsFor  / played;
+                const gpg = goalsFor / played;
+                const gapg = goalsAgainst / played;
 
                 let icon;
                 const teamPrevdata = {
@@ -25,7 +26,7 @@ export default function StandingsTableBody({ standings }: tableProps) {
                     name: standing.team.name,
                     logo: standing.team.logo,
                     form: standing.form,
-                    gpg: gpg.toFixed(2),
+                    gpg: `${gpg.toFixed(2)} / ${gapg.toFixed(2)}`,
 
                 };
                 if (difference < 0) {
