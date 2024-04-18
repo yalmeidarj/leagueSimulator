@@ -19,7 +19,7 @@ export default function NavBar() {
                             width={90}
                             height={90}
                                 className="py-1.5  rounded-r-full
-                                  
+                                shadow-lg
                                  bg-custom-foreground 
                                  mr-[1rem] hover:scale-110 transform transition duration-300 ease-in-out"
                         />
