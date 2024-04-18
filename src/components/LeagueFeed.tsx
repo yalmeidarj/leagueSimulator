@@ -14,7 +14,7 @@ type leagueFeedProps = {
 export default function LeagueFeed() {
     return (
         <div
-            className='relative bottom-0 max-w-5xl min-h-5/5  z-0 overflow-x-auto '
+            className='relative bottom-0 max-w-5xl min-h-[80px] p-2 items-center z-0 overflow-x-auto '
         >
             <div className='ml-[6rem] flex flex-nowrap sm:gap-6 gap-6 items-center justify-between'>
 

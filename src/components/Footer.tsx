@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Footer() {
     const currentYear = new Date().getFullYear();
   return (
-    <footer className="w-full  mt-14  bg-custom-foreground text-custom-background text-center p-4">
+    <footer className="w-full mt-6 bg-custom-foreground text-custom-background text-center p-4">
       
           <p>For the love of the Beautiful Game</p>
           <p>&copy; {currentYear} - By{" "}

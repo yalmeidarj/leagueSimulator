@@ -14,12 +14,13 @@ export default function NavBar() {
                         className="hover:text-br-yellow"
                     >
                         <Image
-                            src="/logo3.png"
+                            src="/logo.png"
                             alt="League Simulator Logo"
                             width={90}
                             height={90}
                                 className="py-1.5  rounded-r-full
-                                 bg-gradient-to-tr from-custom-gradient to-custom-gradientSecond 
+                                  
+                                 bg-custom-foreground 
                                  mr-[1rem] hover:scale-110 transform transition duration-300 ease-in-out"
                         />
                     </Link>
