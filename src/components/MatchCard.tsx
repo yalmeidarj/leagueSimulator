@@ -73,7 +73,7 @@ export default function MatchCard({ props, onGoalsChange }: MatchCardProps) {
             {formattedDate} {props.time}
             
             </p>            
-            <div className='flex  items-center justify-between w-full text-sm  gap-1 '>
+            <div className='flex  items-center justify-between w-full text-sm  gap-0 '>
                 <div className='flex items-center justify-between gap-2 w-full mx-0.5'>
                     <div className='flex justify-end w-full '>                
                         <h1 className='text-lg font-bold truncate'>{props.homeTeam}</h1>
@@ -101,15 +101,15 @@ export default function MatchCard({ props, onGoalsChange }: MatchCardProps) {
                         />
                     </div>
                 </div>
-                <div className="group relative flex flex-col text-xl  border-b border-transparent transition duration-300 ease-in-out transform hover:text-br-yellow hover:border-br-yellow hover:scale-105">
+                {/* <div className="group relative flex flex-col text-xl  border-b border-transparent transition duration-300 ease-in-out transform hover:text-br-yellow hover:border-br-yellow hover:scale-105">
                     <div className='absolute  invisible group-hover:visible  text-white '>
-                        {/* <p><strong>Coming soon...</strong></p> */}
+                        
                         <CtaSubscribe
                             
                         />
                     </div>
                     <MdQueryStats className="cursor-pointer" />
-                </div>
+                </div> */}
                 <div className='flex justify-between items-center mx-0.5 gap-2 w-full '>
                     
                     <div className='max-w-[5rem] grid grid-cols-2 w-full gap-0.5'>
